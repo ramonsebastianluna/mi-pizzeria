@@ -1,0 +1,30 @@
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description__titulo {
+    color: #8D0606;
+    font-family: Pacifico, cursive;
+    font-size: 40px;
+    font-weight: 70;
+    padding: 12px 0 12px 0;
+}
+
+.description__parrafo {
+    color: #595959;
+    font-size: 25px;
+    font-weight: 100;
+    margin: 10px 0 10px 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .description__titulo {
+        text-align: center;
+    }
+
+    .description__parrafo {
+        text-align: center;
+    }
+}

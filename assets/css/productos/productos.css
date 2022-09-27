@@ -1,0 +1,57 @@
+.nuestras-pizzas, .nuestras-bebidas, .nuestros-postres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #E5E5E5;
+}
+.nuestras-pizzas__titulo, .nuestras-bebidas__titulo, .nuestros-postres__titulo {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    color: #595959;
+    font-size: 25px;
+}
+
+.nuestras-pizzas__producto, .nuestras-bebidas__producto, .nuestros-postres__producto {
+    background-color: #FDFDFD;
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px 40px 40px;
+    width: 25%;
+    border-radius: 10px;
+}
+
+.producto__imagen {
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+
+.producto__contenido{
+    padding: 1rem;
+}
+
+.producto__titulo {
+    font-size: 1.6375rem;
+}
+
+.producto__boton {
+    background-color: #8D0606;
+    border: none;
+    border-radius: 5px;
+    color: #FDFDFD;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .nuestras-pizzas, .nuestras-bebidas, .nuestros-postres {
+        flex-direction: column;
+    }
+
+    .nuestras-pizzas__titulo, .nuestras-bebidas__titulo, .nuestros-postres__titulo {
+        padding: 20px 0 20px 0;
+    }
+
+    .nuestras-pizzas__producto, .nuestras-bebidas__producto, .nuestros-postres__producto {
+        width: 80%;
+    }
+}
