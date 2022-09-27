@@ -14,7 +14,7 @@
     text-transform: lowercase;
 }
 
-.menu__item .activo {
+.activo {
     color: #333333;
     font-weight: bold;
 }

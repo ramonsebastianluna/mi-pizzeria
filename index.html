@@ -10,7 +10,6 @@
         
         <!--Links de estilos-->
         <link rel="stylesheet" href="./assets/css/header/html.css">
-        <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="stylesheet" href="./assets/css/header/header.css">
         <link rel="stylesheet" href="./assets/css/nav/barra-navegación.css">
         <link rel="stylesheet" href="./assets/css/banner/banner.css">
@@ -22,11 +21,11 @@
                 <img class="logo" src="./assets/img/logo.jpg" alt="logo">
                 <nav>
                     <ul class="menu__container">
-                        <li class="menu__item"><a id="uno" href="#inicio">Inicio</a></li>
-                        <li class="menu__item"><a id="dos" href="#pizzas">Nuestras pizzas</a></li>
-                        <li class="menu__item"><a id="tres" href="#bebidas">Bebidas</a></li> 
-                        <li class="menu__item"><a id="cuatro" href="#postres">Postres</a></li>
-                        <li class="menu__item"><a id="cinco" href="">0</a></li>
+                        <li class="menu__item activo"><a href="#inicio">Inicio</a></li>
+                        <li class="menu__item"><a href="#pizzas">Nuestras pizzas</a></li>
+                        <li class="menu__item"><a href="#bebidas">Bebidas</a></li> 
+                        <li class="menu__item"><a href="#postres">Postres</a></li>
+                        <li class="menu__item"><a href="#">0</a></li>
                     </ul>
                 </nav>
         </header>
@@ -127,29 +126,6 @@
                 </div>
             </div>
     </section>
-    <script>
-        function reset(){
-            var uno = document.querySelector("#uno");
-            var dos = document.querySelector("#dos");
-            var tres = document.querySelector("#tres");
-            var cuatro = document.querySelector("#cuatro");
-
-            miArray = [uno, dos, tres, cuatro];
-
-            for (let i=0; i > miArray.length; i++){
-                miArray[i].classList.remove();
-                console.log(miArray[i]);
-            }
-        }
-
-        var miBoton = document.querySelector("#uno");
-        miBoton.addEventListener("click", function(){
-            reset();
-            miBoton.classList.add("activo");
-        });
-
-
-
-    </script>
+    <script src="./assets/js/styleNav.js"></script>
     </body>
 </html>
