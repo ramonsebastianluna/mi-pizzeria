@@ -34,6 +34,11 @@
     font-size: 1.6375rem;
 }
 
+.producto__comprar{
+    display: flex;
+    justify-content: space-around;
+}
+
 .producto__boton {
     background-color: #8D0606;
     border: none;
