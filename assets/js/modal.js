@@ -1,5 +1,5 @@
 const abrirModal = document.querySelector(".abrir-modal");
-const cerrarModal = document.querySelector(".carrito__cerrar");
+const cerrarModal = document.querySelector(".carrito__header__cerrar");
 const modal = document.querySelector(".modal__carrito");
 
 abrirModal.addEventListener("click", function(){

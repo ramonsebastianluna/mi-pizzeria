@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="./assets/css/banner/banner.css">
         <link rel="stylesheet" href="./assets/css/description/description.css">
         <link rel="stylesheet" href="./assets/css/productos/productos.css">
+        <link rel="stylesheet" href="assets/css/dialog/dialog.css">
     </head>
     <body>
         <header>
@@ -29,14 +30,6 @@
                     </ul>
                 </nav>
         </header>
-        
-        <!--Modal-->
-        <section class="modal">
-            <dialog class="modal__carrito">
-                <h1>productos agregados</h1>
-                <img class="carrito__cerrar" src="./assets/img/close-image.png" alt="">
-            </dialog>
-        </section>
 
         <!--Banner-->
         <section class="banner" id="inicio">
@@ -101,13 +94,41 @@
                     <div class="producto__contenido"></div>
                 </div>
             </div>
-    </section>
+        </section>
+    
+        <!--Modal-->
+        <section class="modal">
+            <dialog class="modal__carrito">
+                <div class="carrito__header">
+                    <h2 class="carrito__header__titulo">Revisá y confirmá tu compra</h2>
+                    <img class="carrito__header__cerrar" src="./assets/img/close-image.png" alt="cerrar">
+                </div>
+                <div class="carrito__item">
+                    <div class="carrito__item__prod">   
+                        <div class="item__prod__img"></div>
+                        <div class="item__prod__descripción">
+                            <p class="item__prod__titulo">Tomate, albahaca y mozzarella</p>
+                            <button class="item__prod__button">Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="carrito__item__cant">
+                        <input type="number" value="1" min="1" max="10">
+                    </div>
+                    <div class="carrito__item__precio">$1400</div>
+                </div>
+                <div class="carrito__total">
+                    <p class="carrito__total__parrafo">Total de la compra</p>
+                    <button class="carrito__total__comprar">Comprar</button>
+                </div>
+            </dialog>
+        </section>
 
     <!--JS-->
+    <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/styleNav.js"></script>
     <script src="./assets/js/Main.js" type="module"></script>
     <script src="./assets/js/Producto.js" type="module"></script>
     <script src="./assets/js/Carrito.js" type="module"></script>
-    <script src="./assets/js/modal.js"></script>
+    
     </body>
 </html>
