@@ -1,0 +1,35 @@
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(234, 228, 214);
+    color: #585858;
+    padding: 50px;
+}
+
+.footer__logo, .footer__links, .footer__contacto {
+    margin: 0 20px;
+}
+
+.footer__links__item{
+    display: block;
+}
+
+.footer__links a, .footer__contacto a {
+    text-decoration: none;
+    color: #585858;
+}
+
+.footer__contacto {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contacto__item, .footer__links__item {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.contacto__redes__item img {
+    width: 30px;
+    height: 30px;
+}
