@@ -3,6 +3,8 @@ export class Carrito {
 
     agregarAlCarrito(producto){
         this.productos.push(producto);
+
+
     }
 
     totalAPagar(){

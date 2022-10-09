@@ -104,37 +104,41 @@ const agregarProductosAlDOM = (productos) => {
 
 
 const productos = crearProductos();
-console.log(productos)
 agregarProductosAlDOM(productos);
-
-
-//------------------------------------------------------------------
 var carrito = new Carrito();
 
+
+
 const botones = document.querySelectorAll(".producto__boton");
-const itemDelCarrito = document.querySelector(".carrito__contenido");
 
 botones.forEach(function(elemento, index){
     elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
-/*
+
+        let indiceArray = carrito.productos.length;
+        const modal = document.querySelector(".modal__carrito");
+        const carritoContenido = document.createElement("div");
+        carritoContenido.classList.add("carrito__contenido");
+
         const item = `
         <div class="carrito__item">
             <div class="carrito__item__prod">   
-                <div class="item__prod__img"></div>
+                <div class="item__prod__img">
+                    <img class="item__prod__img" src="${carrito.productos[indiceArray-1]["img"]}" alt="${carrito.productos[indiceArray-1]["img"]}"/>
+                </div>
                 <div class="item__prod__descripción">
-                    <p class="item__prod__titulo">Tomate, albahaca y mozzarella</p>
+                    <p class="item__prod__titulo">${carrito.productos[indiceArray-1]["nombre"]}</p>
                     <button class="item__prod__button">Eliminar</button>
                 </div>
             </div>
             <div class="carrito__item__cant">
                 <input type="number" value="1" min="1" max="10">
             </div>
-            <div class="carrito__item__precio">$1400</div>
+            <div class="carrito__item__precio">$${carrito.productos[indiceArray-1]["precio"]}</div>
         </div>
         `;
 
-        itemDelCarrito.innerHTML = item;*/
+        carritoContenido.innerHTML = item;
+        modal.insertBefore(carritoContenido, modal.children[indiceArray]);
     });
 });
-
