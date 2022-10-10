@@ -46,6 +46,15 @@
     border-radius: 5px;
     color: #FDFDFD;
     padding: 1rem;
+    box-sizing: border-box;
+}
+
+.producto__boton:hover {
+    outline: 1px solid #411313;
+}
+
+.producto__boton:active {
+    background-color: #411313;
 }
 
 @media only screen and (max-width: 600px) {

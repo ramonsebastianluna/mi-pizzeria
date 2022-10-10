@@ -115,10 +115,13 @@ botones.forEach(function(elemento, index){
     elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
 
-        let indiceArray = carrito.productos.length;
         const modal = document.querySelector(".modal__carrito");
         const carritoContenido = document.createElement("div");
+        const totalCarritoContenedor = document.querySelector(".carrito__total__parrafo");
+        const contadorCarrito = document.querySelector(".abrir-modal");
+
         carritoContenido.classList.add("carrito__contenido");
+        let indiceArray = carrito.productos.length;
 
         const item = `
         <div class="carrito__item">
@@ -140,5 +143,12 @@ botones.forEach(function(elemento, index){
 
         carritoContenido.innerHTML = item;
         modal.insertBefore(carritoContenido, modal.children[indiceArray]);
+
+        const total = `Total de la compra $${carrito.totalAPagar()}`;
+        totalCarritoContenedor.innerHTML = total;
+
+        const cantidadDeProductosDelCarrito = `${carrito.productos.length}<img src="./assets/img/carrito.svg" alt="carrito">`;
+        contadorCarrito.innerHTML = cantidadDeProductosDelCarrito;
+        
     });
 });
