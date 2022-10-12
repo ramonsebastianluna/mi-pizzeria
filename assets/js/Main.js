@@ -92,7 +92,7 @@ const agregarProductosAlDOM = (productos) => {
         <h4 class="producto__titulo">${productos[i].nombre}</h4>
         <p class="producto__descripcion">${productos[i].descripcion}</p>
         <div class="producto__comprar">
-            <button class="producto__boton" id="${productos[i].id}">Quiero una</button>
+            <button class="producto__boton">Quiero una</button>
             <p class="producto__precio">$${productos[i].precio} c/u</p>
         </div>
         `;
@@ -108,47 +108,73 @@ agregarProductosAlDOM(productos);
 var carrito = new Carrito();
 
 
-
 const botones = document.querySelectorAll(".producto__boton");
+const abrirModal = document.querySelector(".abrir-modal");
+const cerrarModal = document.querySelector(".carrito__header__cerrar");
 
-botones.forEach(function(elemento, index){
-    elemento.addEventListener("click", function(){
-        carrito.agregarAlCarrito(productos[index]);
-
+function crearElementoDelCarritoDOM (){
+    carrito.productos.forEach(function(elemento, index){
         const modal = document.querySelector(".modal__carrito");
-        const carritoContenido = document.createElement("div");
         const totalCarritoContenedor = document.querySelector(".carrito__total__parrafo");
-        const contadorCarrito = document.querySelector(".abrir-modal");
-
+        
+        const carritoContenido = document.createElement("div");
         carritoContenido.classList.add("carrito__contenido");
-        let indiceArray = carrito.productos.length;
-
+        
         const item = `
         <div class="carrito__item">
             <div class="carrito__item__prod">   
                 <div class="item__prod__img">
-                    <img class="item__prod__img" src="${carrito.productos[indiceArray-1]["img"]}" alt="${carrito.productos[indiceArray-1]["img"]}"/>
+                    <img class="item__prod__img" src="${elemento["img"]}" alt="${elemento["img"]}"/>
                 </div>
                 <div class="item__prod__descripción">
-                    <p class="item__prod__titulo">${carrito.productos[indiceArray-1]["nombre"]}</p>
-                    <button class="item__prod__button">Eliminar</button>
+                    <p class="item__prod__titulo">${elemento["nombre"]}</p>
+                    <button class="item__prod__button" id="${elemento["id"]}">Eliminar</button>
                 </div>
             </div>
             <div class="carrito__item__cant">
-                <input type="number" value="1" min="1" max="10">
+                <input class="cantidad" type="number" value="1" min="1" max="10">
             </div>
-            <div class="carrito__item__precio">$${carrito.productos[indiceArray-1]["precio"]}</div>
+            <div class="carrito__item__precio">$${elemento["precio"]}</div>
         </div>
         `;
 
         carritoContenido.innerHTML = item;
-        modal.insertBefore(carritoContenido, modal.children[indiceArray]);
+        modal.insertBefore(carritoContenido, modal.children[index+1]);
 
         const total = `Total de la compra $${carrito.totalAPagar()}`;
         totalCarritoContenedor.innerHTML = total;
+    });
+}
+
+botones.forEach(function(elemento, index){
+    elemento.addEventListener("click", function(evento){
+        carrito.agregarAlCarrito(productos[index]);
 
         const cantidadDeProductosDelCarrito = `${carrito.productos.length}<img src="./assets/img/carrito.svg" alt="carrito">`;
-        contadorCarrito.innerHTML = cantidadDeProductosDelCarrito;
-        
+        abrirModal.innerHTML = cantidadDeProductosDelCarrito;
     });
 });
+
+const eliminarElementosDelCarritoDOM = () => {
+    const modal = document.querySelector(".modal__carrito");
+    const carritoContenido = document.querySelectorAll(".carrito__contenido");
+    carritoContenido.forEach(function(elemento){
+        modal.removeChild(elemento);
+    });
+};
+
+const agregarEventoBotonesDelCarrito = () => {
+    const botonesEliminar = document.querySelectorAll(".item__prod__button");
+    botonesEliminar.forEach(function(elemento){
+        elemento.addEventListener("click", function(event){
+            console.log(event.target);
+        });
+    });
+}
+
+abrirModal.addEventListener("click", ()=>{
+    crearElementoDelCarritoDOM();
+    agregarEventoBotonesDelCarrito();
+});
+
+cerrarModal.addEventListener("click", eliminarElementosDelCarritoDOM);

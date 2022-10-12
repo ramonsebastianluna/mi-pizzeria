@@ -7,5 +7,5 @@ abrirModal.addEventListener("click", function(){
 });
 
 cerrarModal.addEventListener("click", function(){
-    modal.close(); 
+    modal.close();
 });
