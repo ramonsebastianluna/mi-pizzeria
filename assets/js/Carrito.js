@@ -13,8 +13,16 @@ export class Carrito {
     totalAPagar(){
         var total = 0;
         for(let i=0; i < this.productos.length; i++){
-            total += this.productos[i]["precio"];
+            total += this.productos[i]["precio"] * this.productos[i]["cant"];
         }
         return total;
+    }
+
+    totalDeProductosEnCarrito(){
+        var carritoLength = 0;
+        for(let i=0; i < this.productos.length; i++){
+            carritoLength += this.productos[i]["cant"];
+        }
+        return carritoLength;
     }
 }

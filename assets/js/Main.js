@@ -149,7 +149,7 @@ function crearElementoDelCarritoDOM (){
 botones.forEach(function(elemento, index){
     elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
-        const cantidadDeProductosDelCarrito = `${carrito.productos.length}<img src="./assets/img/carrito.svg" alt="carrito">`;
+        const cantidadDeProductosDelCarrito = `${carrito.totalDeProductosEnCarrito()}<img src="./assets/img/carrito.svg" alt="carrito">`;
         abrirModal.innerHTML = cantidadDeProductosDelCarrito;
     });
 });
