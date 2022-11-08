@@ -132,9 +132,9 @@ function crearElementoDelCarritoDOM (){
                 </div>
             </div>
             <div class="carrito__item__cant">
-                <input class="cantidad" type="number" value="1" min="1" max="10">
+                <input class="cantidad" type="number" value=${elemento["cant"]} min="1" max="10">
             </div>
-            <div class="carrito__item__precio">$${elemento["precio"]}</div>
+            <div class="carrito__item__precio">$${elemento["precio"]*elemento["cant"]}</div>
         </div>
         `;
 
@@ -147,9 +147,8 @@ function crearElementoDelCarritoDOM (){
 }
 
 botones.forEach(function(elemento, index){
-    elemento.addEventListener("click", function(evento){
+    elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
-
         const cantidadDeProductosDelCarrito = `${carrito.productos.length}<img src="./assets/img/carrito.svg" alt="carrito">`;
         abrirModal.innerHTML = cantidadDeProductosDelCarrito;
     });

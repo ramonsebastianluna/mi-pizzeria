@@ -19,6 +19,11 @@
     margin: 0 40px 40px 40px;
     width: 25%;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nuestras-pizzas__producto:hover, .nuestras-bebidas__producto:hover, .nuestros-postres__producto:hover {
+    transform: scale(1.03);
 }
 
 .producto__imagen {
