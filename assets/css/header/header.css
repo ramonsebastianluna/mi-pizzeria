@@ -14,7 +14,13 @@ header {
 }
 
 @media only screen and (max-width: 600px) {
+    header {
+        justify-content: center;
+        min-height: 75px;
+    }
+    
     .logo {
         margin-left: 0;
+        display: none;
     }
 }
