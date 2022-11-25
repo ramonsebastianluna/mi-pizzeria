@@ -25,4 +25,15 @@ export class Carrito {
         }
         return carritoLength;
     }
+
+    eliminarDelCarrito(idElemento){
+        let indiceAEliminar;
+        this.productos.forEach(function(elemento, index){
+            if (elemento.id.includes(idElemento)){
+                indiceAEliminar = index;
+            }
+        });
+
+        this.productos.splice(indiceAEliminar, 1);    
+    }
 }

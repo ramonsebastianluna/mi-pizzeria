@@ -74,8 +74,7 @@ function crearProductos(){
         "./assets/img/postres/brownie-de-chocolate.jpg"
     );
 
-    const productos = [pizza1, pizza2, pizza3, bebida1, bebida2, bebida3, postre1, postre2, postre3];
-    return productos;
+    return [pizza1, pizza2, pizza3, bebida1, bebida2, bebida3, postre1, postre2, postre3];
 }
 
 const agregarProductosAlDOM = (productos) => {
@@ -112,16 +111,25 @@ const botones = document.querySelectorAll(".producto__boton");
 const abrirModal = document.querySelector(".abrir-modal");
 const cerrarModal = document.querySelector(".carrito__header__cerrar");
 
+const actualizarTotalDeLaCompra = () => {
+    const totalCarritoContenedor = document.querySelector(".carrito__total__parrafo");
+    const total = `Total de la compra $${carrito.totalAPagar()}`;
+    totalCarritoContenedor.innerHTML = total;
+}
+
 function crearElementoDelCarritoDOM (){
+    const carritoContenido = document.createElement("div");
+    carritoContenido.classList.add("carrito__contenido");
+    
+    const modal = document.querySelector(".modal__carrito");
+    const referenciaContenedor = document.querySelector(".carrito__total");   
+
     carrito.productos.forEach(function(elemento, index){
-        const modal = document.querySelector(".modal__carrito");
-        const totalCarritoContenedor = document.querySelector(".carrito__total__parrafo");
-        
-        const carritoContenido = document.createElement("div");
-        carritoContenido.classList.add("carrito__contenido");
-        
-        const item = `
-        <div class="carrito__item">
+        const item = document.createElement("div");
+        item.classList.add("carrito__item");
+        item.setAttribute("id", elemento["id"]);
+
+        const itemContenido = `
             <div class="carrito__item__prod">   
                 <div class="item__prod__img">
                     <img class="item__prod__img" src="${elemento["img"]}" alt="${elemento["img"]}"/>
@@ -135,22 +143,25 @@ function crearElementoDelCarritoDOM (){
                 <input class="cantidad" type="number" value=${elemento["cant"]} min="1" max="10">
             </div>
             <div class="carrito__item__precio">$${elemento["precio"]*elemento["cant"]}</div>
-        </div>
         `;
 
-        carritoContenido.innerHTML = item;
-        modal.insertBefore(carritoContenido, modal.children[index+1]);
-
-        const total = `Total de la compra $${carrito.totalAPagar()}`;
-        totalCarritoContenedor.innerHTML = total;
+        item.innerHTML = itemContenido;
+        carritoContenido.append(item);
+        modal.insertBefore(carritoContenido, referenciaContenedor);
     });
+
+    actualizarTotalDeLaCompra();
+}
+
+const actualizarIconoCarrito = () => {
+    const cantidadDeProductosDelCarrito = `${carrito.totalDeProductosEnCarrito()}<img src="./assets/img/carrito.svg" alt="carrito">`;
+    abrirModal.innerHTML = cantidadDeProductosDelCarrito;    
 }
 
 botones.forEach(function(elemento, index){
     elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
-        const cantidadDeProductosDelCarrito = `${carrito.totalDeProductosEnCarrito()}<img src="./assets/img/carrito.svg" alt="carrito">`;
-        abrirModal.innerHTML = cantidadDeProductosDelCarrito;
+        actualizarIconoCarrito();
     });
 });
 
@@ -162,11 +173,21 @@ const eliminarElementosDelCarritoDOM = () => {
     });
 };
 
+const eliminarElemento = (idItem) => {
+    const itemAEliminar = document.getElementById(idItem);
+    const carritoContenido = document.querySelector(".carrito__contenido");
+    carritoContenido.removeChild(itemAEliminar);
+    carrito.eliminarDelCarrito(idItem);
+    actualizarIconoCarrito();
+    actualizarTotalDeLaCompra();
+}
+
 const agregarEventoBotonesDelCarrito = () => {
     const botonesEliminar = document.querySelectorAll(".item__prod__button");
+
     botonesEliminar.forEach(function(elemento){
-        elemento.addEventListener("click", function(event){
-            console.log(event.target);
+        elemento.addEventListener("click", function(){
+            eliminarElemento(elemento.id);
         });
     });
 }
