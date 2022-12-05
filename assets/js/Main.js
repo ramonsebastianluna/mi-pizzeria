@@ -158,10 +158,18 @@ const actualizarIconoCarrito = () => {
     abrirModal.innerHTML = cantidadDeProductosDelCarrito;    
 }
 
+const mostrarConfirmación = () => {
+    modalConfirmacion.showModal();
+    setTimeout(function(){
+        modalConfirmacion.close()
+    }, 1500);
+};
+
 botones.forEach(function(elemento, index){
     elemento.addEventListener("click", function(){
         carrito.agregarAlCarrito(productos[index]);
         actualizarIconoCarrito();
+        mostrarConfirmación();
     });
 });
 

@@ -1,10 +1,21 @@
-.modal__carrito {
+.modal__carrito, .modal__confirmacion{
     border-radius: 5px;
     border: none;
 }
 
-.modal__carrito::backdrop {
+.modal__carrito::backdrop, .modal__confirmacion::backdrop {
 	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__confirmacion__titulo {
+    display: inline-block;
+    vertical-align: super;
+}
+
+.modal__confirmacion__img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
 }
 
 .carrito__header {

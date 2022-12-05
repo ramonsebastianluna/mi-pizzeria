@@ -9,3 +9,5 @@ abrirModal.addEventListener("click", function(){
 cerrarModal.addEventListener("click", function(){
     modal.close();
 });
+
+const modalConfirmacion = document.querySelector(".modal__confirmacion");
