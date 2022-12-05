@@ -1,0 +1,15 @@
+.firma {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firma__texto {
+    margin: 0;
+}
+
+.logo-red-social__github, .logo-red-social__linkedin {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}

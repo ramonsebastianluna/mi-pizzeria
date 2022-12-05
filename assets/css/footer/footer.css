@@ -1,4 +1,4 @@
-footer {
+.footer {
     display: flex;
     justify-content: center;
     background-color: rgb(234, 228, 214);
@@ -35,7 +35,7 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-    footer{
+    .footer{
         display: block;
         text-align: center;
     }
