@@ -114,7 +114,11 @@ const cerrarModal = document.querySelector(".carrito__header__cerrar");
 const actualizarTotalDeLaCompra = () => {
     const totalCarritoContenedor = document.querySelector(".carrito__total__parrafo");
     const total = `Total de la compra $${carrito.totalAPagar()}`;
-    totalCarritoContenedor.innerHTML = total;
+    if (carrito.totalAPagar() == 0) {
+        totalCarritoContenedor.innerText = "No hay productos agregados en el carrito";
+    } else {
+        totalCarritoContenedor.innerHTML = total;
+    }
 }
 
 function crearElementoDelCarritoDOM (){

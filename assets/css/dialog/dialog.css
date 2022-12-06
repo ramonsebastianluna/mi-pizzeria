@@ -88,3 +88,10 @@
 .carrito__item__precio {
     margin: auto 10px auto 0;
 }
+
+/*Borra las flechas que vienen por defecto en el input type="number"*/
+input[type="number"] {
+    -webkit-appearance: textfield !important;
+    margin: 0;
+    -moz-appearance:textfield !important;
+}
